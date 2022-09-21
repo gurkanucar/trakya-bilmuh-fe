@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { Button, Form, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../api/apiCalls";
+import { useSelector, useDispatch } from "react-redux";
 import "./LoginPage.css";
+import { login } from "../../store/auth";
 
 export const LoginPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [credientals, setCredientals] = useState({
     username: "",
     password: "",
@@ -14,7 +20,15 @@ export const LoginPage = () => {
     console.log(credientals);
     loginUser(credientals)
       .then((x) => {
-        console.log(x.data.accessToken);
+        const data = x.data;
+        console.log(data);
+        dispatch(
+          login({
+            myToken: data.accessToken,
+            myDetails: data.userDto,
+          })
+        );
+        navigate("/home");
       })
       .catch((e) => {
         alert(e.response.data.error);
