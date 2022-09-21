@@ -5,7 +5,7 @@ import { NavbarComponent } from "../../components/NavbarComponent";
 import { logout } from "../../store/auth";
 import { MessageInputComponent } from "../../components/MessageInputComponent";
 import { TabComponent } from "../../components/TabComponent";
-import { createMessage } from "../../api/apiCalls";
+import { createAnnouncement, createMessage } from "../../api/apiCalls";
 
 export const HomePage = () => {
   const dispatch = useDispatch();
@@ -26,6 +26,7 @@ export const HomePage = () => {
 
   const saveAnnouncement = (e) => {
     console.log("Announcement: ", e);
+    createAnnouncement(e, credientals.myToken);
   };
 
   return (
