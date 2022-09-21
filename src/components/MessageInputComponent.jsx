@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 
 export const MessageInputComponent = (props) => {
+  const initialValues = props?.initialValues;
   const [values, setValues] = useState({
-    content: "",
+    content: initialValues?.content || "",
     user: {},
-    messageType: "JOB",
-    link: "",
+    messageType: initialValues?.messageType || "JOB",
+    link: initialValues?.link || "",
   });
 
   const saveMessage = (e) => {
