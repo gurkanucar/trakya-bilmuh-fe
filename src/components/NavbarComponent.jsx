@@ -4,8 +4,11 @@ import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { FaHome, FaSignOutAlt } from "react-icons/fa";
 import { MdSettings } from "react-icons/md";
 
-export const NavbarComponent = () => {
-  const isLoggedIn = !false;
+export const NavbarComponent = (props) => {
+  const { username,doLogout } = props;
+
+
+
 
   return (
     <Navbar bg="warning" expand="md">
@@ -41,11 +44,11 @@ export const NavbarComponent = () => {
               </div>
             </Nav.Link>
           </Nav>
-          <Nav>
+          <Nav onClick={doLogout} style={{ cursor: "pointer" }}>
             <Navbar.Text>
-              Kullanici:{" "}
-              <strong href="#login">
-                Gurkan <FaSignOutAlt size={20} />
+              Çıkış Yap:{" "}
+              <strong href="#logout">
+                {username} <FaSignOutAlt size={20} />
               </strong>
             </Navbar.Text>
           </Nav>
@@ -54,29 +57,3 @@ export const NavbarComponent = () => {
     </Navbar>
   );
 };
-/*
- <Navbar bg="warning">
-      <Container>
-        <Navbar.Brand>Trakya Bilmuh - Panel</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-bar" />
-        <Navbar.Collapse
-          id="responsive-navbar-bar"
-          className="justify-content-end"
-        >
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Anasayfa</Nav.Link>
-            <Nav.Link href="#features">Ayarlar</Nav.Link>
-          </Nav>
-          {isLoggedIn && (
-            <>
-              <Navbar.Text>
-                Kullanici: <strong href="#login">Gurkan</strong>
-              </Navbar.Text>
-              <Button style={{ marginLeft: 20 }} variant="dark">
-                signout
-              </Button>
-            </>
-          )}
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>*/
