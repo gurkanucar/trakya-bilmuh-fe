@@ -24,8 +24,12 @@ export const MessageInputComponent = (props) => {
 
   return (
     <div style={{ margin: 50 }}>
-      <h2>Mesaj Gönder</h2>
-      <br />
+      {values.id == 0 && (
+        <div>
+          <h2>Mesaj Gönder</h2>
+          <br />
+        </div>
+      )}
       <Form onSubmit={saveMessage}>
         <Form.Group size="lg" className="mb-3" controlId="form.detail">
           <Form.Label size="lg">Detay</Form.Label>

@@ -22,8 +22,12 @@ export const AnnouncementnputComponents = (props) => {
 
   return (
     <div style={{ margin: 50 }}>
-      <h2>Duyuru Ekle</h2>
-      <br />
+      {values.id == 0 && (
+        <div>
+          <h2>Duyuru Ekle</h2>
+          <br />
+        </div>
+      )}
       <Form onSubmit={saveAnnouncement}>
         <Form.Group className="mb-3" size="lg" controlId="form.title">
           <Form.Label size="lg">Başlık</Form.Label>
