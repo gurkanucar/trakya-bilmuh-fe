@@ -1,22 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { NavbarComponent } from "../../components/NavbarComponent";
-import { logout } from "../../store/auth";
-import { MessageInputComponent } from "../../components/MessageInputComponent";
 import { TabComponent } from "../../components/TabComponent";
 import { createAnnouncement, createMessage } from "../../api/apiCalls";
 
-export const HomePage = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const credientals = useSelector((state) => state.auth.value);
-
-  const doLogout = () => {
-    dispatch(logout());
-    navigate("/login");
-  };
+export const HomePage = (props) => {
+  const { credientals } = props;
 
   const saveMessage = (e) => {
     e.user = credientals.myDetails;
@@ -31,10 +18,6 @@ export const HomePage = () => {
 
   return (
     <div>
-      <NavbarComponent
-        username={credientals.myDetails.username}
-        doLogout={doLogout}
-      />
       <TabComponent
         saveMessage={saveMessage}
         saveAnnouncement={saveAnnouncement}
