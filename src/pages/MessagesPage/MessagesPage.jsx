@@ -34,7 +34,7 @@ export const MessagesPage = (props) => {
 
   return (
     <div>
-      <h1>MessagesPage</h1>
+      <span className="message-page-title">MessagesPage</span>
       <MessageList saveMessage={saveMessage} messageList={messageList} />
     </div>
   );

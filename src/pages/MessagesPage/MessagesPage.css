@@ -1,6 +1,6 @@
 .message-list-item-actions {
     flex: 1;
-    background-color: rgb(255, 253, 240);
+    background-color: #fcd5274d;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -20,4 +20,14 @@
     align-items: center;
     flex-direction: column;
     flex: 1;
+}
+
+
+.message-page-title {
+    margin: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 30px;
 }
