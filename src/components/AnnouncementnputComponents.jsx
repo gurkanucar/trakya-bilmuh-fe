@@ -4,6 +4,7 @@ import { Button, Form } from "react-bootstrap";
 export const AnnouncementnputComponents = (props) => {
   const initialValues = props?.initialValues;
   const [values, setValues] = useState({
+    id: initialValues?.id || 0,
     content: initialValues?.content || "",
     title: initialValues?.title || "",
     link: initialValues?.link || "",
