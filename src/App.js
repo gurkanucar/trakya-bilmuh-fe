@@ -31,9 +31,9 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/home" element={<HomePage credientals={credientals} />} />
-          <Route path="/messages" element={<MessagesPage />} />
-          <Route path="/announcements" element={<AnnouncementsPage />} />
-          <Route path="/settings" element={<HomePage />} />
+          <Route path="/messages" element={<MessagesPage credientals={credientals} />} />
+          <Route path="/announcements" element={<AnnouncementsPage credientals={credientals}  />} />
+          <Route path="/settings" element={<HomePage  credientals={credientals} />} />
           {/* <Route path="/addresses/details/:id" element={<DetailPage />} /> */}
         </Route>
         <Route path="/login" element={<LoginPage />} />
