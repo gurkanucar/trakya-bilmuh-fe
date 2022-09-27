@@ -19,7 +19,8 @@ import { FaHome, FaSignOutAlt } from "react-icons/fa";
 import React from "react";
 
 export const NavbarComponent = (props) => {
-  const { credientals } = props;
+  const { credientals, doLogout } = props;
+  const { myDetails: user } = credientals;
 
   const navigate = useNavigate();
 
@@ -42,14 +43,14 @@ export const NavbarComponent = (props) => {
               Duyurular
             </Nav.Link>
           </Nav>
-          {/* <Nav onClick={doLogout} style={{ cursor: "pointer" }}>
+          <Nav onClick={doLogout} style={{ cursor: "pointer" }}>
             <Navbar.Text>
               Çıkış Yap:{" "}
               <strong href="#logout">
-                {username} <FaSignOutAlt size={20} />
+                {user.username} <FaSignOutAlt size={20} />
               </strong>
             </Navbar.Text>
-          </Nav> */}
+          </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
