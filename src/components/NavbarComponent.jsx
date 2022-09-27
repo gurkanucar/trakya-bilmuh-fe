@@ -1,50 +1,55 @@
-import React from "react";
-import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-
+import {
+  Navbar,
+  NavDropdown,
+  Form,
+  FormControl,
+  Button,
+  Nav,
+  Container,
+} from "react-bootstrap";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 import { FaHome, FaSignOutAlt } from "react-icons/fa";
-import { MdSettings, MdMessage } from "react-icons/md";
-import { GrAnnounce } from "react-icons/gr";
+
+import React from "react";
+
 export const NavbarComponent = (props) => {
-  const { username, doLogout } = props;
+  const { credientals } = props;
 
-
-
+  const navigate = useNavigate();
 
   return (
-    <Navbar bg="warning" expand="md">
+    <Navbar bg="warning" variant={"light"} expand="lg">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand onClick={() => navigate("/home")}>
           <strong>Trakya Bilmuh - Panel</strong>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">
-              <FaHome size={25} />
-              <span className="navbar-component-item-text">
-                {" "}Anasayfa</span>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav className="me-auto my-2 my-lg-0" navbarScroll>
+            <Nav.Link as={Link} to="/home">
+              Anasayfa
             </Nav.Link>
-            <Nav.Link href="#messages">
-              <MdMessage size={25} />
-              <span className="navbar-component-item-text">
-                {" "}Mesajlar</span>
+            <Nav.Link as={Link} to="/messages">
+              Mesaj
             </Nav.Link>
-            <Nav.Link href="#announcements">
-              <GrAnnounce size={25} />
-              <span className="navbar-component-item-text">{" "}Duyurular</span>
-            </Nav.Link>
-            <Nav.Link href="#settings">
-              <MdSettings size={25} /><span className="navbar-component-item-text">{" "}Ayarlar</span>
+            <Nav.Link as={Link} to="/announcements">
+              Duyurular
             </Nav.Link>
           </Nav>
-          <Nav onClick={doLogout} style={{ cursor: "pointer" }}>
+          {/* <Nav onClick={doLogout} style={{ cursor: "pointer" }}>
             <Navbar.Text>
               Çıkış Yap:{" "}
               <strong href="#logout">
                 {username} <FaSignOutAlt size={20} />
               </strong>
             </Navbar.Text>
-          </Nav>
+          </Nav> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>
