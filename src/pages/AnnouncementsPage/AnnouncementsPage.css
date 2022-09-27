@@ -1,0 +1,33 @@
+.announcement-list-item-actions {
+    flex: 1;
+    background-color: #fcd5274d;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 20px;
+    padding-right: 10px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+
+
+.announcement-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+.announcement-page-title {
+    margin: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 30px;
+}

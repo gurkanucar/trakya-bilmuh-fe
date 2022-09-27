@@ -1,12 +1,44 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { updateAnnouncement, getAnnouncementList } from "../../api/apiCalls";
+import { AnnouncementList } from "./AnnouncementList";
 import "./AnnouncementsPage.css";
+
 export const AnnouncementsPage = (props) => {
- 
   const { credientals } = props;
+
+  const [announcementList, setAnnouncementList] = useState([]);
+
+  const saveAnnouncement = async (e) => {
+    console.log("Announcement: ", e);
+    await updateAnnouncement(e, credientals.myToken);
+    fetchAnnouncements();
+  };
+
+  useEffect(() => {
+    fetchAnnouncements();
+  }, [credientals]);
+
+  const fetchAnnouncements = () => {
+    getAnnouncementList(credientals.myToken)
+      .then((x) => {
+        const data = x.data;
+        setAnnouncementList(data);
+      })
+      .catch((e) => {
+        alert(e.response.data.error);
+        console.log(e.e.response.data.error);
+      });
+  };
 
   return (
     <div>
-      <h1>AnnouncementsPage</h1>
+      <span className="announcement-page-title">Announcement Page</span>
+      <AnnouncementList
+        saveAnnouncement={saveAnnouncement}
+        announcementList={announcementList}
+      />
     </div>
   );
 };
