@@ -25,7 +25,7 @@ export const LoginPage = () => {
         dispatch(
           login({
             myToken: data.accessToken,
-            myDetails: data.userDto,
+            myDetails: data.user,
           })
         );
         navigate("/home");
