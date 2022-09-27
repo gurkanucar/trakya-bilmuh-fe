@@ -32,7 +32,15 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+@media (min-width:768px) and (max-width:900px) {
+  .navbar-component-item-text {
+    display: none;
   }
 }

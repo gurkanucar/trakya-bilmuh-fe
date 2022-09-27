@@ -2,10 +2,10 @@ import React from "react";
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 import { FaHome, FaSignOutAlt } from "react-icons/fa";
-import { MdSettings } from "react-icons/md";
-
+import { MdSettings, MdMessage } from "react-icons/md";
+import { GrAnnounce } from "react-icons/gr";
 export const NavbarComponent = (props) => {
-  const { username,doLogout } = props;
+  const { username, doLogout } = props;
 
 
 
@@ -20,28 +20,21 @@ export const NavbarComponent = (props) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="#home">
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                }}
-              >
-                <FaHome />
-                Anasayfa
-              </div>
+              <FaHome size={25} />
+              <span className="navbar-component-item-text">
+                {" "}Anasayfa</span>
             </Nav.Link>
-            <Nav.Link href="#link">
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                }}
-              >
-                <MdSettings />
-                Ayarlar
-              </div>
+            <Nav.Link href="#messages">
+              <MdMessage size={25} />
+              <span className="navbar-component-item-text">
+                {" "}Mesajlar</span>
+            </Nav.Link>
+            <Nav.Link href="#announcements">
+              <GrAnnounce size={25} />
+              <span className="navbar-component-item-text">{" "}Duyurular</span>
+            </Nav.Link>
+            <Nav.Link href="#settings">
+              <MdSettings size={25} /><span className="navbar-component-item-text">{" "}Ayarlar</span>
             </Nav.Link>
           </Nav>
           <Nav onClick={doLogout} style={{ cursor: "pointer" }}>
