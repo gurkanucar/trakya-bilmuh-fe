@@ -1,13 +1,20 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { getMessageList } from "../../api/apiCalls";
+import { getMessageList, updateMessage } from "../../api/apiCalls";
 import { MessageList } from "./MessageList";
 import "./MessagesPage.css";
 export const MessagesPage = (props) => {
   const { credientals } = props;
 
   const [messageList, setMessageList] = useState([]);
+
+  const saveMessage = async (e) => {
+    e.user = credientals.myDetails;
+    console.log("Message: ", e);
+    await updateMessage(e, credientals.myToken);
+    fetchMessages();
+  };
 
   useEffect(() => {
     fetchMessages();
@@ -28,7 +35,7 @@ export const MessagesPage = (props) => {
   return (
     <div>
       <h1>MessagesPage</h1>
-      <MessageList messageList={messageList} />
+      <MessageList saveMessage={saveMessage} messageList={messageList} />
     </div>
   );
 };

@@ -1,10 +1,16 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
+import { MessageInputComponent } from "../../components/MessageInputComponent";
 
 export const MessageListItemModal = (props) => {
-  const { show, setShow } = props;
+  const { show, setShow, initialValues, saveMessage } = props;
 
   const handleClose = () => setShow(false);
+
+  const saveMessageFunc = (e) => {
+    saveMessage(e);
+    handleClose();
+  };
 
   return (
     <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
@@ -12,15 +18,11 @@ export const MessageListItemModal = (props) => {
         <Modal.Title>Modal title</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        I will not close if you click outside me. Don't even try to press escape
-        key.
+        <MessageInputComponent
+          initialValues={initialValues}
+          saveMessage={saveMessageFunc}
+        />
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
-        <Button variant="primary">Understood</Button>
-      </Modal.Footer>
     </Modal>
   );
 };

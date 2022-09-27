@@ -8,7 +8,7 @@ import { MessageListItemModal } from "./MessageListItemModal";
 import "./MessagesPage.css";
 
 export const MessageListItem = (props) => {
-  const { message, readOnly } = props;
+  const { message, readOnly,saveMessage } = props;
 
   const [showEdit, setShowEdit] = useState(false);
 
@@ -34,7 +34,12 @@ export const MessageListItem = (props) => {
           {message?.link && <Button href={message?.link}>Bağlantıyı aç</Button>}
         </Card.Body>
       </Card>
-      <MessageListItemModal show={showEdit} setShow={setShowEdit} />
+      <MessageListItemModal
+      saveMessage={saveMessage}
+        initialValues={message}
+        show={showEdit}
+        setShow={setShowEdit}
+      />
     </Container>
   );
 };
