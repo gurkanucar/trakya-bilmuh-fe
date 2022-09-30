@@ -54,12 +54,11 @@ export const AnnouncementnputComponents = (props) => {
         <Form.Group className="mb-3" size="lg" controlId="form.link">
           <Form.Label size="lg">Link</Form.Label>
           <Form.Control
-            required
             onChange={(e) => setValues({ ...values, link: e.target.value })}
             value={values.link}
             size="lg"
             type="text"
-            placeholder="yönlendirme linki"
+            placeholder="yönlendirme linki (keyfi)"
           />
         </Form.Group>
         <div className="d-grid gap-2">
