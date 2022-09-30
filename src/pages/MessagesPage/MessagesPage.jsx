@@ -37,7 +37,7 @@ export const MessagesPage = (props) => {
         setMessageList(data);
       })
       .catch((e) => {
-        alert(e.response.data.error);
+        //alert(e.response.data.error);
         console.log(e.e.response.data.error);
       });
   };
