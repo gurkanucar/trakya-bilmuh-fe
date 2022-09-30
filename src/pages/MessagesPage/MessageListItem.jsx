@@ -9,7 +9,7 @@ import { MessageListItemModal } from "./MessageListItemModal";
 import "./MessagesPage.css";
 
 export const MessageListItem = (props) => {
-  const { message, initialValues, readOnly, saveMessage, deleteFunc } = props;
+  const { message, readOnly, saveMessage, deleteFunc } = props;
 
   const [showEdit, setShowEdit] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
