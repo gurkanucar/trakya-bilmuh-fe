@@ -8,7 +8,7 @@ import { AnnouncementListItemModal } from "./AnnouncementListItemModal";
 import "./AnnouncementsPage.css";
 
 export const AnnouncementListItem = (props) => {
-  const { message, readOnly, saveAnnouncement } = props;
+  const { announcement, readOnly, saveAnnouncement } = props;
 
   const [showEdit, setShowEdit] = useState(false);
 
@@ -24,18 +24,20 @@ export const AnnouncementListItem = (props) => {
         <Card.Body>
           <Card.Subtitle className="mb-2 text-muted">
             {`${
-              message.createdDateTime != message.updatedDateTime
+              announcement.createdDateTime != announcement.updatedDateTime
                 ? "Güncellendi ! - "
                 : ""
-            } ${new Date(message.createdDateTime).toUTCString()}`}
+            } ${new Date(announcement.createdDateTime).toUTCString()}`}
           </Card.Subtitle>
-          <Card.Text>{message.content}</Card.Text>
-          {message?.link && <Button href={message?.link}>Bağlantıyı aç</Button>}
+          <Card.Text>{announcement.content}</Card.Text>
+          {announcement?.link && (
+            <Button href={announcement?.link}>Bağlantıyı aç</Button>
+          )}
         </Card.Body>
       </Card>
       <AnnouncementListItemModal
         saveAnnouncement={saveAnnouncement}
-        initialValues={message}
+        initialValues={announcement}
         show={showEdit}
         setShow={setShowEdit}
       />

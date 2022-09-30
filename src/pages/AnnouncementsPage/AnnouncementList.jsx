@@ -12,7 +12,7 @@ export const AnnouncementList = (props) => {
         <AnnouncementListItem
           saveAnnouncement={saveAnnouncement}
           key={idx}
-          message={x}
+          announcement={x}
         />
       ))}
     </div>
