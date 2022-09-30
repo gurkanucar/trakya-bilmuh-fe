@@ -1,7 +1,11 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { getMessageList, updateMessage } from "../../api/apiCalls";
+import {
+  deleteMessageById,
+  getMessageList,
+  updateMessage,
+} from "../../api/apiCalls";
 import { MessageList } from "./MessageList";
 import "./MessagesPage.css";
 export const MessagesPage = (props) => {
@@ -13,6 +17,12 @@ export const MessagesPage = (props) => {
     e.user = credientals.myDetails;
     console.log("Message: ", e);
     await updateMessage(e, credientals.myToken);
+    fetchMessages();
+  };
+
+  const deleteFunc = async (e) => {
+    console.log("Delete: ", e);
+    await deleteMessageById(e.id, credientals.myToken);
     fetchMessages();
   };
 
@@ -35,7 +45,11 @@ export const MessagesPage = (props) => {
   return (
     <div>
       <span className="message-page-title">MessagesPage</span>
-      <MessageList saveMessage={saveMessage} messageList={messageList} />
+      <MessageList
+        deleteFunc={deleteFunc}
+        saveMessage={saveMessage}
+        messageList={messageList}
+      />
     </div>
   );
 };

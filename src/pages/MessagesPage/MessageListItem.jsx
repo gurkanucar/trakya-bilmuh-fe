@@ -3,14 +3,16 @@ import { useState } from "react";
 import { Button, Card, Container } from "react-bootstrap";
 
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
+import { AskForDeleteComponent } from "../../components/AskForDeleteComponent";
 import { MessageListItemModal } from "./MessageListItemModal";
 
 import "./MessagesPage.css";
 
 export const MessageListItem = (props) => {
-  const { message, readOnly,saveMessage } = props;
+  const { message, initialValues, readOnly, saveMessage, deleteFunc } = props;
 
   const [showEdit, setShowEdit] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
 
   return (
     <Container style={{ margin: 15 }}>
@@ -18,7 +20,7 @@ export const MessageListItem = (props) => {
         {!readOnly && (
           <div className="message-list-item-actions">
             <MdModeEditOutline onClick={() => setShowEdit(true)} />
-            <MdDelete />
+            <MdDelete onClick={() => setShowDelete(true)} />
           </div>
         )}
         <Card.Body>
@@ -35,10 +37,16 @@ export const MessageListItem = (props) => {
         </Card.Body>
       </Card>
       <MessageListItemModal
-      saveMessage={saveMessage}
+        saveMessage={saveMessage}
         initialValues={message}
         show={showEdit}
         setShow={setShowEdit}
+      />
+      <AskForDeleteComponent
+        deleteFunc={deleteFunc}
+        setShow={setShowDelete}
+        initialValues={message}
+        show={showDelete}
       />
     </Container>
   );
