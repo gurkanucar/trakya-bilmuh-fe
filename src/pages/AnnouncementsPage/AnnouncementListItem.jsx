@@ -4,13 +4,14 @@ import { Button, Card, Container } from "react-bootstrap";
 
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
 import { AnnouncementListItemModal } from "./AnnouncementListItemModal";
-
+import { AskForDeleteComponent } from "../../components/AskForDeleteComponent";
 import "./AnnouncementsPage.css";
 
 export const AnnouncementListItem = (props) => {
-  const { announcement, readOnly, saveAnnouncement } = props;
+  const { announcement, readOnly, saveAnnouncement, deleteFunc } = props;
 
   const [showEdit, setShowEdit] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
 
   return (
     <Container style={{ margin: 15 }}>
@@ -18,7 +19,7 @@ export const AnnouncementListItem = (props) => {
         {!readOnly && (
           <div className="announcement-list-item-actions">
             <MdModeEditOutline onClick={() => setShowEdit(true)} />
-            <MdDelete />
+            <MdDelete onClick={() => setShowDelete(true)}/>
           </div>
         )}
         <Card.Body>
@@ -40,6 +41,12 @@ export const AnnouncementListItem = (props) => {
         initialValues={announcement}
         show={showEdit}
         setShow={setShowEdit}
+      />
+      <AskForDeleteComponent
+        deleteFunc={deleteFunc}
+        setShow={setShowDelete}
+        initialValues={announcement}
+        show={showDelete}
       />
     </Container>
   );

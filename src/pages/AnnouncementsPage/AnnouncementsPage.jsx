@@ -1,7 +1,11 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { updateAnnouncement, getAnnouncementList } from "../../api/apiCalls";
+import {
+  updateAnnouncement,
+  getAnnouncementList,
+  deleteAnnouncementById,
+} from "../../api/apiCalls";
 import { AnnouncementList } from "./AnnouncementList";
 import "./AnnouncementsPage.css";
 
@@ -13,6 +17,12 @@ export const AnnouncementsPage = (props) => {
   const saveAnnouncement = async (e) => {
     console.log("Announcement: ", e);
     await updateAnnouncement(e, credientals.myToken);
+    fetchAnnouncements();
+  };
+
+  const deleteFunc = async (e) => {
+    console.log("Delete: ", e);
+    await deleteAnnouncementById(e.id, credientals.myToken);
     fetchAnnouncements();
   };
 
@@ -36,6 +46,7 @@ export const AnnouncementsPage = (props) => {
     <div>
       <span className="announcement-page-title">Announcement Page</span>
       <AnnouncementList
+        deleteFunc={deleteFunc}
         saveAnnouncement={saveAnnouncement}
         announcementList={announcementList}
       />

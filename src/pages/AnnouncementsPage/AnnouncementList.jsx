@@ -3,7 +3,7 @@ import { AnnouncementListItem } from "./AnnouncementListItem";
 import "./AnnouncementsPage.css";
 
 export const AnnouncementList = (props) => {
-  const { announcementList, saveAnnouncement } = props;
+  const { announcementList, deleteFunc, saveAnnouncement } = props;
 
   return (
     <div className="announcement-list">
@@ -13,6 +13,7 @@ export const AnnouncementList = (props) => {
           saveAnnouncement={saveAnnouncement}
           key={idx}
           announcement={x}
+          deleteFunc={deleteFunc}
         />
       ))}
     </div>
