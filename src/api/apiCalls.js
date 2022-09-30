@@ -58,6 +58,14 @@ export const getAnnouncementById = (id, token) => {
   });
 };
 
+export const deleteAnnouncementById = (id, token) => {
+  return axios.delete(API_BASE_URL + "/api/announcement/" + id, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 
 export const getMessageList = (token) => {
   return axios.get(API_BASE_URL + "/api/message", {
@@ -70,6 +78,14 @@ export const getMessageList = (token) => {
 
 export const getMessageById = (id, token) => {
   return axios.get(API_BASE_URL + "/api/message/" + id, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const deleteMessageById = (id, token) => {
+  return axios.delete(API_BASE_URL + "/api/message/" + id, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
