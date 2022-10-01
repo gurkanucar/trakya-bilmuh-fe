@@ -13,16 +13,22 @@ export const AnnouncementListItem = (props) => {
   const [showEdit, setShowEdit] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
 
+  const deleteAndCloseModalFunc = (e) => {
+    setShowDelete(false);
+    deleteFunc(e);
+  };
+
   return (
     <Container style={{ margin: 15 }}>
       <Card>
         {!readOnly && (
           <div className="announcement-list-item-actions">
             <MdModeEditOutline onClick={() => setShowEdit(true)} />
-            <MdDelete onClick={() => setShowDelete(true)}/>
+            <MdDelete onClick={() => setShowDelete(true)} />
           </div>
         )}
         <Card.Body>
+          <Card.Title>{announcement.title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
             {`${
               announcement.createdDateTime != announcement.updatedDateTime
@@ -43,7 +49,7 @@ export const AnnouncementListItem = (props) => {
         setShow={setShowEdit}
       />
       <AskForDeleteComponent
-        deleteFunc={deleteFunc}
+        deleteFunc={deleteAndCloseModalFunc}
         setShow={setShowDelete}
         initialValues={announcement}
         show={showDelete}

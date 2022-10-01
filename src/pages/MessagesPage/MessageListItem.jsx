@@ -14,6 +14,11 @@ export const MessageListItem = (props) => {
   const [showEdit, setShowEdit] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
 
+  const deleteAndCloseModalFunc = (e) => {
+    setShowDelete(false);
+    deleteFunc(e);
+  };
+
   return (
     <Container style={{ margin: 15 }}>
       <Card>
@@ -43,7 +48,7 @@ export const MessageListItem = (props) => {
         setShow={setShowEdit}
       />
       <AskForDeleteComponent
-        deleteFunc={deleteFunc}
+        deleteFunc={deleteAndCloseModalFunc}
         setShow={setShowDelete}
         initialValues={message}
         show={showDelete}
