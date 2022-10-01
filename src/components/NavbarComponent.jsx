@@ -17,8 +17,11 @@ import {
 import { FaHome, FaSignOutAlt } from "react-icons/fa";
 
 import React from "react";
+import { useTranslation } from "react-i18next";
+import LanguageSelector from "./LanguageSelector";
 
 export const NavbarComponent = (props) => {
+  const { t } = useTranslation();
   const { credientals, doLogout } = props;
   const { myDetails: user } = credientals;
 
@@ -34,23 +37,24 @@ export const NavbarComponent = (props) => {
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0" navbarScroll>
             <Nav.Link as={Link} to="/home">
-              Anasayfa
+              {t("homePage")}
             </Nav.Link>
             <Nav.Link as={Link} to="/messages">
-              Mesaj
+              {t("messagePage")}
             </Nav.Link>
             <Nav.Link as={Link} to="/announcements">
-              Duyurular
+              {t("announcementPage")}
             </Nav.Link>
           </Nav>
           <Nav onClick={doLogout} style={{ cursor: "pointer" }}>
             <Navbar.Text>
-              Çıkış Yap:{" "}
+              {t("logout")}
               <strong href="#logout">
                 {user.username} <FaSignOutAlt size={20} />
               </strong>
             </Navbar.Text>
           </Nav>
+          <LanguageSelector />
         </Navbar.Collapse>
       </Container>
     </Navbar>

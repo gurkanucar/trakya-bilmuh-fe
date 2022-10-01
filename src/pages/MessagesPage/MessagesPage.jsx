@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   deleteMessageById,
   getMessageList,
@@ -11,7 +12,8 @@ import "./MessagesPage.css";
 export const MessagesPage = (props) => {
   const { credientals } = props;
 
-  const [messageList, setMessageList] = useState([]);
+  const [messageList, setMessageList] = useState([]);  
+  const { t } = useTranslation();
 
   const saveMessage = async (e) => {
     e.user = credientals.myDetails;
@@ -44,7 +46,7 @@ export const MessagesPage = (props) => {
 
   return (
     <div>
-      <span className="message-page-title">MessagesPage</span>
+      <span className="message-page-title">{t("messagePage")}</span>
       <MessageList
         deleteFunc={deleteFunc}
         saveMessage={saveMessage}

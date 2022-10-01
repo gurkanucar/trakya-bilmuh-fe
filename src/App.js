@@ -10,7 +10,7 @@ import { AnnouncementsPage } from "./pages/AnnouncementsPage/AnnouncementsPage";
 import { MessagesPage } from "./pages/MessagesPage/MessagesPage";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "./store/auth";
-
+import './i18n';
 function App() {
 
   const dispatch = useDispatch();

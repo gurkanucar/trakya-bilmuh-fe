@@ -5,8 +5,10 @@ import { loginUser } from "../../api/apiCalls";
 import { useSelector, useDispatch } from "react-redux";
 import "./LoginPage.css";
 import { login } from "../../store/auth";
+import { useTranslation } from "react-i18next";
 
 export const LoginPage = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -46,7 +48,7 @@ export const LoginPage = () => {
       <Form onSubmit={doLogin}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>
-            <strong>Kullanici Adi</strong>
+            <strong>{t("username")}</strong>
           </Form.Label>
           <Form.Control
             onChange={(e) =>
@@ -54,26 +56,26 @@ export const LoginPage = () => {
             }
             type="text"
             required
-            placeholder="kullanici adini girin"
+            placeholder={t("usernameInputPlaceholder")}
           />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>
-            <strong>Parola</strong>
+            <strong>{t("password")}</strong>
           </Form.Label>
           <Form.Control
             onChange={(e) =>
               setCredientals({ ...credientals, password: e.target.value })
             }
             type="password"
-            placeholder="parola"
+            placeholder={t("passwordInputPlaceholder")}
           />
         </Form.Group>
         <br />
         <div className="d-grid gap-2">
           <Button variant="warning" required type="submit" size="md">
-            Giriş Yap
+            {t("loginButton")}
           </Button>
         </div>
       </Form>

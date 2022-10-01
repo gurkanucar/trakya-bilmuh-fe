@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useTranslation } from "react-i18next";
 
 export const AskForDeleteComponent = (props) => {
+  const { t } = useTranslation();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const { deleteFunc, initialValues, show, setShow } = props;
@@ -16,15 +18,15 @@ export const AskForDeleteComponent = (props) => {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Uyarı!</Modal.Title>
+          <Modal.Title>{t("warning")}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Silmek istediğinize emin misiniz?</Modal.Body>
+        <Modal.Body>{t("askForDelete")}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            İptal
+            {t("cancel")}
           </Button>
           <Button variant="danger" onClick={() => deleteFunc(initialValues)}>
-            Sil
+            {t("delete")}
           </Button>
         </Modal.Footer>
       </Modal>

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 export const AnnouncementnputComponents = (props) => {
+  const { t } = useTranslation();
   const initialValues = props?.initialValues;
   const [values, setValues] = useState({
     id: initialValues?.id || 0,
@@ -24,24 +26,24 @@ export const AnnouncementnputComponents = (props) => {
     <div style={{ margin: 50 }}>
       {values.id == 0 && (
         <div>
-          <h2>Duyuru Ekle</h2>
+          <h2> {t("createAnnouncement")}</h2>
           <br />
         </div>
       )}
       <Form onSubmit={saveAnnouncement}>
         <Form.Group className="mb-3" size="lg" controlId="form.title">
-          <Form.Label size="lg">Başlık</Form.Label>
+          <Form.Label size="lg">{t("title")}</Form.Label>
           <Form.Control
             onChange={(e) => setValues({ ...values, title: e.target.value })}
             value={values.title}
             required
             size="lg"
             type="text"
-            placeholder="ÖR: ... dersi iptal"
+            placeholder={t("examplePlaceholderForAnnouncement")}
           />
         </Form.Group>
         <Form.Group size="lg" className="mb-3" controlId="form.detail">
-          <Form.Label size="lg">Detay</Form.Label>
+          <Form.Label size="lg">{t("detail")}</Form.Label>
           <Form.Control
             onChange={(e) => setValues({ ...values, content: e.target.value })}
             value={values.content}
@@ -52,18 +54,18 @@ export const AnnouncementnputComponents = (props) => {
           />
         </Form.Group>
         <Form.Group className="mb-3" size="lg" controlId="form.link">
-          <Form.Label size="lg">Link</Form.Label>
+          <Form.Label size="lg">{t("link")}</Form.Label>
           <Form.Control
             onChange={(e) => setValues({ ...values, link: e.target.value })}
             value={values.link}
             size="lg"
             type="text"
-            placeholder="yönlendirme linki (keyfi)"
+            placeholder={t("redirectOptional")}
           />
         </Form.Group>
         <div className="d-grid gap-2">
           <Button variant="warning" required type="submit" size="md">
-            Kaydet
+          {t("save")}
           </Button>
         </div>
       </Form>

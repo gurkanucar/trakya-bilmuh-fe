@@ -6,9 +6,11 @@ import { MdModeEditOutline, MdDelete } from "react-icons/md";
 import { AnnouncementListItemModal } from "./AnnouncementListItemModal";
 import { AskForDeleteComponent } from "../../components/AskForDeleteComponent";
 import "./AnnouncementsPage.css";
+import { useTranslation } from "react-i18next";
 
 export const AnnouncementListItem = (props) => {
   const { announcement, readOnly, saveAnnouncement, deleteFunc } = props;
+  const { t } = useTranslation();
 
   const [showEdit, setShowEdit] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
@@ -32,13 +34,13 @@ export const AnnouncementListItem = (props) => {
           <Card.Subtitle className="mb-2 text-muted">
             {`${
               announcement.createdDateTime != announcement.updatedDateTime
-                ? "Güncellendi ! - "
+                ? t("updated")
                 : ""
             } ${new Date(announcement.createdDateTime).toUTCString()}`}
           </Card.Subtitle>
           <Card.Text>{announcement.content}</Card.Text>
           {announcement?.link && (
-            <Button href={announcement?.link}>Bağlantıyı aç</Button>
+            <Button href={announcement?.link}>{t("openLink")}</Button>
           )}
         </Card.Body>
       </Card>

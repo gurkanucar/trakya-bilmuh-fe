@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Button, Card, Container } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
 import { AskForDeleteComponent } from "../../components/AskForDeleteComponent";
@@ -8,7 +9,8 @@ import { MessageListItemModal } from "./MessageListItemModal";
 import "./MessagesPage.css";
 
 export const MessageListItem = (props) => {
-  const { message, readOnly, saveMessage, deleteFunc } = props;
+  const { message, readOnly, saveMessage, deleteFunc } = props;  
+  const { t } = useTranslation();
 
   const [showEdit, setShowEdit] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
@@ -37,7 +39,7 @@ export const MessageListItem = (props) => {
             }`}
           </Card.Subtitle>
           <Card.Text>{message.content}</Card.Text>
-          {message?.link && <Button href={message?.link}>Bağlantıyı aç</Button>}
+          {message?.link && <Button href={message?.link}>{t("openLink")}</Button>}
         </Card.Body>
       </Card>
       <MessageListItemModal

@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   updateAnnouncement,
   getAnnouncementList,
@@ -10,7 +11,8 @@ import { AnnouncementList } from "./AnnouncementList";
 import "./AnnouncementsPage.css";
 
 export const AnnouncementsPage = (props) => {
-  const { credientals } = props;
+  const { credientals } = props;  
+  const { t } = useTranslation();
 
   const [announcementList, setAnnouncementList] = useState([]);
 
@@ -44,7 +46,7 @@ export const AnnouncementsPage = (props) => {
 
   return (
     <div>
-      <span className="announcement-page-title">Announcement Page</span>
+      <span className="announcement-page-title">{t("announcementPage")}</span>
       <AnnouncementList
         deleteFunc={deleteFunc}
         saveAnnouncement={saveAnnouncement}
