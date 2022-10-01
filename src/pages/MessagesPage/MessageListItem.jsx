@@ -5,7 +5,6 @@ import { Button, Card, Container } from "react-bootstrap";
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
 import { AskForDeleteComponent } from "../../components/AskForDeleteComponent";
 import { MessageListItemModal } from "./MessageListItemModal";
-
 import "./MessagesPage.css";
 
 export const MessageListItem = (props) => {
