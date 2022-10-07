@@ -12,19 +12,25 @@ import "./MessagesPage.css";
 export const MessagesPage = (props) => {
   const { credientals } = props;
 
-  const [messageList, setMessageList] = useState([]);  
+  const [messageList, setMessageList] = useState([]);
   const { t } = useTranslation();
 
   const saveMessage = async (e) => {
     e.user = credientals.myDetails;
     console.log("Message: ", e);
-    await updateMessage(e, credientals.myToken);
+    await updateMessage(e, credientals.myToken).catch((e) => {
+      alert(e.response.data.error);
+      console.log(e.e.response.data.error);
+    });
     fetchMessages();
   };
 
   const deleteFunc = async (e) => {
     console.log("Delete: ", e);
-    await deleteMessageById(e.id, credientals.myToken);
+    await deleteMessageById(e.id, credientals.myToken).catch((e) => {
+      alert(e.response.data.error);
+      console.log(e.e.response.data.error);
+    });
     fetchMessages();
   };
 
