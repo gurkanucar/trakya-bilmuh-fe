@@ -45,6 +45,9 @@ export const NavbarComponent = (props) => {
             <Nav.Link as={Link} to="/announcements">
               {t("announcementPage")}
             </Nav.Link>
+            <Nav.Link as={Link} to="/channels">
+              {t("channelPage")}
+            </Nav.Link>
           </Nav>
           <Nav onClick={doLogout} style={{ cursor: "pointer" }}>
             <Navbar.Text>

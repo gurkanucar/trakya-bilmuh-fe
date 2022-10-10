@@ -11,6 +11,7 @@ import { MessagesPage } from "./pages/MessagesPage/MessagesPage";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "./store/auth";
 import './i18n';
+import { ChannelPage } from "./pages/ChannelPage/ChannelPage";
 function App() {
 
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function App() {
           <Route path="/home" element={<HomePage credientals={credientals} />} />
           <Route path="/messages" element={<MessagesPage credientals={credientals} />} />
           <Route path="/announcements" element={<AnnouncementsPage credientals={credientals}  />} />
+          <Route path="/channels" element={<ChannelPage credientals={credientals}  />} />
           <Route path="/settings" element={<HomePage  credientals={credientals} />} />
           {/* <Route path="/addresses/details/:id" element={<DetailPage />} /> */}
         </Route>
