@@ -9,7 +9,7 @@ import { MessageListItemModal } from "./MessageListItemModal";
 import "./MessagesPage.css";
 
 export const MessageListItem = (props) => {
-  const { message, readOnly, saveMessage, deleteFunc } = props;  
+  const { message, readOnly, saveMessage, deleteFunc } = props;
   const { t } = useTranslation();
 
   const [showEdit, setShowEdit] = useState(false);
@@ -35,11 +35,13 @@ export const MessageListItem = (props) => {
           }`}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
             {`${new Date(message.createdDateTime).toUTCString()} - ${
-              message.messageType
+              message.channel.channelName
             }`}
           </Card.Subtitle>
           <Card.Text>{message.content}</Card.Text>
-          {message?.link && <Button href={message?.link}>{t("openLink")}</Button>}
+          {message?.link && (
+            <Button href={message?.link}>{t("openLink")}</Button>
+          )}
         </Card.Body>
       </Card>
       <MessageListItemModal
