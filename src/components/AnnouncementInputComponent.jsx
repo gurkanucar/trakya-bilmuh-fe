@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 
-export const AnnouncementnputComponents = (props) => {
+export const AnnouncementInputComponent = (props) => {
   const { t } = useTranslation();
   const initialValues = props?.initialValues;
   const [values, setValues] = useState({

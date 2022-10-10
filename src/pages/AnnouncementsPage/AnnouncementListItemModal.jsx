@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { AnnouncementnputComponents } from "../../components/AnnouncementnputComponents";
+import { AnnouncementInputComponent } from "../../components/AnnouncementInputComponent";
 
 export const AnnouncementListItemModal = (props) => {
   const { show, setShow, initialValues, saveAnnouncement } = props;
@@ -20,7 +20,7 @@ export const AnnouncementListItemModal = (props) => {
         <Modal.Title>{t("edit")}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <AnnouncementnputComponents
+        <AnnouncementInputComponent
           initialValues={initialValues}
           saveAnnouncement={saveAnnouncementFunc}
         />
