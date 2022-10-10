@@ -7,7 +7,7 @@ export const ChannelInputComponent = (props) => {
   const initialValues = props?.initialValues;
   const [values, setValues] = useState({
     id: initialValues?.id || 0,
-    canSendOthers: initialValues?.canSendOthers || "",
+    canSendOthers: initialValues?.canSendOthers || false,
     channelName: initialValues?.channelName || "",
     channelImageUrl: initialValues?.channelImageUrl || "",
   });
@@ -58,6 +58,7 @@ export const ChannelInputComponent = (props) => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="canSendOthers">
           <Form.Check
+            checked={values.canSendOthers}
             onChange={(e) =>
               setValues({ ...values, canSendOthers: e.target.checked })
             }
