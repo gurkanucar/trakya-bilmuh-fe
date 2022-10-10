@@ -30,6 +30,14 @@ export const createAnnouncement = (payload, token) => {
   });
 };
 
+export const createChannel = (payload, token) => {
+  return axiosInstance.post(API_BASE_URL + "/api/channel", payload, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 export const updateAnnouncement = (payload, token) => {
   return axiosInstance.put(API_BASE_URL + "/api/announcement", payload, {
     headers: {
