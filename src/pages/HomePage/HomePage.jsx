@@ -1,6 +1,10 @@
 import React from "react";
 import { TabComponent } from "../../components/TabComponent";
-import { createAnnouncement, createMessage } from "../../api/apiCalls";
+import {
+  createAnnouncement,
+  createChannel,
+  createMessage,
+} from "../../api/apiCalls";
 
 export const HomePage = (props) => {
   const { credientals } = props;
@@ -16,9 +20,16 @@ export const HomePage = (props) => {
     createAnnouncement(e, credientals.myToken);
   };
 
+  const saveChannel = (e) => {
+    e.user = credientals.myDetails;
+    console.log("Channel: ", e);
+    createChannel(e, credientals.myToken);
+  };
+
   return (
     <div>
       <TabComponent
+        saveChannel={saveChannel}
         saveMessage={saveMessage}
         saveAnnouncement={saveAnnouncement}
       />

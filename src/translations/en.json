@@ -32,5 +32,11 @@
   "delete": "delete",
   "openLink": "Open link",
   "updated": "Updated!",
-  "edit": "edit"
+  "edit": "edit",
+  "channel": "channel",
+  "createChannel": "create channel",
+  "channelName": "channel name",
+  "image": "image",
+  "optional": "optional",
+  "canSendOthers": "Someone can send message different than me"
 }

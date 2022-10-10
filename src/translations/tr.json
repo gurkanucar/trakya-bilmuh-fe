@@ -32,5 +32,11 @@
   "delete": "Sil",
   "openLink": "Bağlantıyı aç",
   "updated": "Güncellendi!",
-  "edit": "Düzenle"
+  "edit": "Düzenle",
+  "channel": "Kanal",
+  "createChannel": "Kanal Oluştur",
+  "channelName": "Kanal Adı",
+  "image": "Resim",
+  "optional":"Keyfi",
+  "canSendOthers":"Başkaları da bu kanala mesaj gönderebilsin"
 }
