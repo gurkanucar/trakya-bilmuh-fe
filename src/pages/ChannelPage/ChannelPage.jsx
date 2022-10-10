@@ -17,7 +17,10 @@ export const ChannelPage = (props) => {
 
   const saveChannel = async (e) => {
     console.log("Channel: ", e);
-    await updateChannel(e, credientals.myToken);
+    await updateChannel(e, credientals.myToken).catch((e) => {
+      alert(e.response.data.error);
+      console.log(e.e.response.data.error);
+    });
     fetchChannels();
   };
 
@@ -38,7 +41,7 @@ export const ChannelPage = (props) => {
         setChannelList(data);
       })
       .catch((e) => {
-        // alert(e.response.data.error);
+        //  alert(e.response.data.error);
         console.log(e.e.response.data.error);
       });
   };
