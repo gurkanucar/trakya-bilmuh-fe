@@ -85,3 +85,12 @@ export const deleteMessageById = (id, token) => {
     },
   });
 };
+
+
+export const getMyChannels = (token) => {
+  return axiosInstance.get(API_BASE_URL + "/api/channel/my-channels", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
