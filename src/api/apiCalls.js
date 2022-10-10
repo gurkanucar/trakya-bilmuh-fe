@@ -46,6 +46,14 @@ export const updateAnnouncement = (payload, token) => {
   });
 };
 
+export const updateChannel = (payload, token) => {
+  return axiosInstance.put(API_BASE_URL + "/api/channel", payload, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 export const getAnnouncementList = (token) => {
   return axiosInstance.get(API_BASE_URL + "/api/announcement", {
     headers: {
@@ -70,6 +78,13 @@ export const deleteAnnouncementById = (id, token) => {
   });
 };
 
+export const deleteChannelById = (id, token) => {
+  return axiosInstance.delete(API_BASE_URL + "/api/channel/" + id, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
 export const getMessageList = (token) => {
   return axiosInstance.get(API_BASE_URL + "/api/message", {
     headers: {
@@ -93,7 +108,6 @@ export const deleteMessageById = (id, token) => {
     },
   });
 };
-
 
 export const getMyChannels = (token) => {
   return axiosInstance.get(API_BASE_URL + "/api/channel/my-channels", {
