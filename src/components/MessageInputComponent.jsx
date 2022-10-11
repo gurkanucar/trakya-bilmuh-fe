@@ -27,6 +27,7 @@ export const MessageInputComponent = (props) => {
     getMyChannels(credientals.myToken)
       .then((res) => {
         setChannels(res.data);
+        setValues({ ...values, channel: res.data[0].id });
         console.log(res.data);
       })
       .catch((e) => {
@@ -42,7 +43,7 @@ export const MessageInputComponent = (props) => {
     setValues({
       content: "",
       user: {},
-      channel: "",
+      channel: channels[0].id,
       link: "",
     });
   };
@@ -86,7 +87,9 @@ export const MessageInputComponent = (props) => {
             onChange={(e) => setValues({ ...values, channel: e.target.value })}
           >
             {channels.map((x) => (
-              <option value={x.id}>{x.channelName}</option>
+              <option key={x.id} value={x.id}>
+                {x.channelName}
+              </option>
             ))}
           </Form.Select>
         </Form.Group>

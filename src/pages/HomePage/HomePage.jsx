@@ -11,6 +11,7 @@ export const HomePage = (props) => {
 
   const saveMessage = (e) => {
     e.user = credientals.myDetails;
+    e.channel = { id: e.channel.id };
     console.log("Message: ", e);
     createMessage(e, credientals.myToken);
   };
