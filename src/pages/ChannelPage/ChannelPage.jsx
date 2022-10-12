@@ -48,7 +48,7 @@ export const ChannelPage = (props) => {
 
   return (
     <div>
-      <span className="channel-page-title">{t("announcementPage")}</span>
+      <span className="channel-page-title">{t("channelPage")}</span>
       <ChannelPageList
         deleteFunc={deleteFunc}
         saveChannel={saveChannel}

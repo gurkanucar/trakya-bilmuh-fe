@@ -34,9 +34,9 @@
   "openLink": "Open link",
   "updated": "Updated!",
   "edit": "edit",
-  "channel": "channel",
-  "createChannel": "create channel",
-  "channelName": "channel name",
+  "channel": "Channel",
+  "createChannel": "Create Channel",
+  "channelName": "Channel Name",
   "image": "image",
   "optional": "optional",
   "canSendOthers": "Someone can send message different than me"
