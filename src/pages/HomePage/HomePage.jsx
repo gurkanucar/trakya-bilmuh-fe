@@ -1,35 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { TabComponent } from "../../components/TabComponent";
 import {
   createAnnouncement,
   createChannel,
   createMessage,
+  getMyChannels,
 } from "../../api/apiCalls";
 
 export const HomePage = (props) => {
   const { credientals } = props;
+  const [channels, setChannels] = useState([]);
 
-  const saveMessage = (e) => {
+  useEffect(() => {
+    getChannels();
+  }, [credientals]);
+
+  const getChannels = () => {
+    getMyChannels(credientals.myToken)
+      .then((res) => {
+        console.log(res.data);
+        setChannels(res.data);
+      })
+      .catch((e) => {
+        console.log(e.e.response.data.error);
+      });
+  };
+
+  const saveMessage = async (e) => {
     e.user = credientals.myDetails;
     e.channel = { id: e.channel.id };
     console.log("Message: ", e);
-    createMessage(e, credientals.myToken);
+    await createMessage(e, credientals.myToken);
+    getChannels();
   };
 
-  const saveAnnouncement = (e) => {
+  const saveAnnouncement = async (e) => {
     console.log("Announcement: ", e);
-    createAnnouncement(e, credientals.myToken);
+    await createAnnouncement(e, credientals.myToken);
+    getChannels();
   };
 
-  const saveChannel = (e) => {
+  const saveChannel = async (e) => {
     e.user = credientals.myDetails;
     console.log("Channel: ", e);
-    createChannel(e, credientals.myToken);
+    await createChannel(e, credientals.myToken);
+    getChannels();
   };
 
   return (
     <div>
       <TabComponent
+        channels={channels}
         saveChannel={saveChannel}
         saveMessage={saveMessage}
         saveAnnouncement={saveAnnouncement}

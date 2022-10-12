@@ -7,6 +7,7 @@ import { getMyChannels } from "../api/apiCalls";
 
 export const MessageInputComponent = (props) => {
   const credientals = useSelector((state) => state.auth.value);
+  const { channels } = props;
   const { t } = useTranslation();
   const initialValues = props?.initialValues;
   const [values, setValues] = useState({
@@ -16,25 +17,14 @@ export const MessageInputComponent = (props) => {
     channel: initialValues?.channel.id || "",
     link: initialValues?.link || "",
   });
-
-  const [channels, setChannels] = useState([]);
-
   useEffect(() => {
-    getChannels();
-  }, [credientals]);
-
-  const getChannels = () => {
-    getMyChannels(credientals.myToken)
-      .then((res) => {
-        setChannels(res.data);
-        setValues({ ...values, channel: res.data[0].id });
-        console.log(res.data);
-      })
-      .catch((e) => {
-        //alert(e.response.data.error);
-        console.log(e.e.response.data.error);
+    if (channels.length > 0) {
+      setValues({
+        ...values,
+        channel: channels[0].id,
       });
-  };
+    }
+  }, [channels]);
 
   const saveMessage = (e) => {
     e.preventDefault();
@@ -78,6 +68,7 @@ export const MessageInputComponent = (props) => {
             placeholder={t("redirectOptional")}
           />
         </Form.Group>
+
         <Form.Group size="lg" className="mb-3" controlId="form.messageType">
           <Form.Label size="lg">{t("messageType")}</Form.Label>
           <Form.Select

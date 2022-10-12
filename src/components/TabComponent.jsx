@@ -6,7 +6,12 @@ import { AnnouncementInputComponent } from "./AnnouncementInputComponent";
 import { ChannelInputComponent } from "./ChannelInputComponent";
 import { MessageInputComponent } from "./MessageInputComponent";
 
-export const TabComponent = ({ saveAnnouncement, saveMessage,saveChannel }) => {
+export const TabComponent = ({
+  saveAnnouncement,
+  saveMessage,
+  saveChannel,
+  channels,
+}) => {
   const [key, setKey] = useState("message");
   const { t } = useTranslation();
 
@@ -18,12 +23,12 @@ export const TabComponent = ({ saveAnnouncement, saveMessage,saveChannel }) => {
       className="mb-3"
     >
       <Tab eventKey="message" title={t("message")}>
-        <MessageInputComponent saveMessage={saveMessage} />
+        <MessageInputComponent channels={channels} saveMessage={saveMessage} />
       </Tab>
       <Tab eventKey="announcement" title={t("announcement")}>
         <AnnouncementInputComponent saveAnnouncement={saveAnnouncement} />
-      </Tab> 
-       <Tab eventKey="channel" title={t("channel")}>
+      </Tab>
+      <Tab eventKey="channel" title={t("channel")}>
         <ChannelInputComponent saveChannel={saveChannel} />
       </Tab>
     </Tabs>
