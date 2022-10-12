@@ -38,16 +38,19 @@ Thanks to this project, students can join channels created by teachers and they 
 ## Example Images
 
 #### Mobile App
+<p float="left">
 
-![image](./images/a_1.png)
+<img src="images/a_1.png" width="250">
 
-![image](./images/a_2.png)
+<img src="images/a_2.png" width="250">
 
-![image](./images/a_3.png)
+<img src="images/a_3.png" width="250">
 
-![image](./images/a_4.png)
+<img src="images/a_4.png" width="250">
 
-![image](./images/a_5.png)
+<img src="images/a_5.png" width="250">
+
+</p>
 
 #### Panel
 
