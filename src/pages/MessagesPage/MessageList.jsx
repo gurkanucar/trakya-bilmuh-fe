@@ -6,7 +6,7 @@ import "./MessagesPage.css";
 import { useTranslation } from "react-i18next";
 
 export const MessageList = (props) => {
-  const { messageList, deleteFunc, saveMessage } = props;  
+  const { messageList, deleteFunc, saveMessage, channels } = props;
   const { t } = useTranslation();
 
   const [parent] = useAutoAnimate(/* optional config */);
@@ -15,6 +15,7 @@ export const MessageList = (props) => {
       {messageList.length == 0 && <h5>{t("dataNotFound")}</h5>}
       {messageList.map((x, idx) => (
         <MessageListItem
+          channels={channels}
           deleteFunc={deleteFunc}
           saveMessage={saveMessage}
           key={idx}

@@ -9,7 +9,7 @@ import { MessageListItemModal } from "./MessageListItemModal";
 import "./MessagesPage.css";
 
 export const MessageListItem = (props) => {
-  const { message, readOnly, saveMessage, deleteFunc } = props;
+  const { message, readOnly, saveMessage, deleteFunc,channels} = props;
   const { t } = useTranslation();
 
   const [showEdit, setShowEdit] = useState(false);
@@ -45,6 +45,7 @@ export const MessageListItem = (props) => {
         </Card.Body>
       </Card>
       <MessageListItemModal
+      channels={channels}
         saveMessage={saveMessage}
         initialValues={message}
         show={showEdit}

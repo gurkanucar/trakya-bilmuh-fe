@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { MessageInputComponent } from "../../components/MessageInputComponent";
 
 export const MessageListItemModal = (props) => {
-  const { show, setShow, initialValues, saveMessage } = props;  
+  const { show, setShow, initialValues, saveMessage, channels } = props;
   const { t } = useTranslation();
 
   const handleClose = () => setShow(false);
@@ -21,6 +21,7 @@ export const MessageListItemModal = (props) => {
       </Modal.Header>
       <Modal.Body>
         <MessageInputComponent
+          channels={channels}
           initialValues={initialValues}
           saveMessage={saveMessageFunc}
         />

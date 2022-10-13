@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import {
   deleteMessageById,
   getMessageList,
+  getMyChannels,
   updateMessage,
 } from "../../api/apiCalls";
 import { MessageList } from "./MessageList";
@@ -14,6 +15,19 @@ export const MessagesPage = (props) => {
 
   const [messageList, setMessageList] = useState([]);
   const { t } = useTranslation();
+
+  const [channels, setChannels] = useState([]);
+
+  const getChannels = () => {
+    getMyChannels(credientals.myToken)
+      .then((res) => {
+        console.log(res.data);
+        setChannels(res.data);
+      })
+      .catch((e) => {
+        console.log(e.e.response.data.error);
+      });
+  };
 
   const saveMessage = async (e) => {
     e.user = credientals.myDetails;
@@ -36,6 +50,7 @@ export const MessagesPage = (props) => {
 
   useEffect(() => {
     fetchMessages();
+    getChannels();
   }, [credientals]);
 
   const fetchMessages = () => {
@@ -54,6 +69,7 @@ export const MessagesPage = (props) => {
     <div>
       <span className="message-page-title">{t("messagePage")}</span>
       <MessageList
+      channels={channels}
         deleteFunc={deleteFunc}
         saveMessage={saveMessage}
         messageList={messageList}
